@@ -27,6 +27,7 @@ public class ViewReportPatientTest extends TestBase{
 	@Test(description="US_006 Creation of Report",groups={"US_006","regression","sanity","patientmodule"})
 	public void patientView() throws Exception {
 
+		
 
 		helperObj = new HelperClass(driver);
 		helperObj.launchApplicationURL("http://96.84.175.78/MMP-Release2-Integrated-Build.6.8.000/portal/login.php");
