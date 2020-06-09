@@ -3,6 +3,8 @@ package org.iit.mmp.adminmodule.pages;
 
 import org.iit.mmp.helper.HelperClass;
 import org.iit.mmp.utility.Utility;
+
+import java.util.HashMap;
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -131,5 +133,33 @@ public class CreateReportAdminPage {
 
 	}
 	
+	public HashMap<String, String> reportDetail(String reptName, String reptDesc, String fileName) throws InterruptedException {
+
+		HashMap<String, String> hMap = new HashMap<String, String>();
+		
+		String selectAppointments = "//select[@name='app_date']";
+		WebElement we2 = driver.findElement(By.xpath(selectAppointments));
+		Select selectAppt = new Select(we2);
+		selectAppt.selectByIndex(3);
+		
+
+		String reportName = "//input[@id='exampleInputcardnumber1']";	
+		driver.findElement(By.xpath(reportName)).sendKeys(reptName);
+		hMap.put("reportName", reptName);
+		
+		WebElement we1 = driver.findElement(By.xpath("//input[@id='file']"));
+		we1.sendKeys(fileName);
+		hMap.put("fileName", fileName);
+
+		String reportDesc = "//label[text()='Report Description:']/following-sibling::textarea[@name='report_desc']";
+		driver.findElement(By.xpath(reportDesc)).sendKeys(reptDesc);
+		hMap.put("reportDesc", reptDesc);
+
+		String submit = "//input[@type='submit']";
+		driver.findElement(By.xpath(submit)).click();
+
+		return hMap;
+
+	}
 
 }
