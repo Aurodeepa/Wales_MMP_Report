@@ -30,7 +30,7 @@ public class CreateReportAdminTest extends TestBase {
 	public void createReport() throws Exception {
 
 		helperObj = new HelperClass(driver);
-		helperObj.launchApplicationURL("http://96.84.175.78/MMP-Release1-Integrated-Build.2.4.000/admin/login.php");
+		helperObj.launchApplicationURL("http://96.84.175.78/MMP-Release2-Admin-Build.2.1.000/login.php");
 		helperObj.login("Thomas_444","Edison_444");
 		helperObj.moduleNavigation("Patients");
 		CreateReportAdminPage createRepo = new CreateReportAdminPage(driver);
@@ -40,8 +40,12 @@ public class CreateReportAdminTest extends TestBase {
 		//createRepo.patientSearchSSN("462379048");
 		createRepo.patientDetails("462379048");
 		SoftAssert sa = new SoftAssert();
-		sa.assertTrue(createRepo.reportDetails("XRAY-General report","This is general XRAY report","C:\\Users\\vikib\\Desktop\\Team Wales - SELENIUM PROJECT\\Project Work\\lung-article-703x441.jpg"));
+		sa.assertTrue(createRepo.reportDetails("XRAY-General report","This is general XRAY report","C:\\Users\\vikib\\Desktop\\Team Wales - SELENIUM PROJECT\\Project Work\\lung-article-703x441.jpg"), null);
 		sa.assertAll();
+		helperObj.closeDriver();
+		
 
 	}
+	
+	
 }

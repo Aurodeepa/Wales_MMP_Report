@@ -22,6 +22,7 @@ public class HelperClass {
 	 
 	public void moduleNavigation(String moduleName)
 	{
+		
 		driver.findElement(By.xpath("//span[contains(text(),'"+moduleName+"')]")).click();
 	}
 	 
@@ -55,5 +56,10 @@ public class HelperClass {
 		FileUtils.copyFile(sourceFile,destFile);
 		
 	}
-
+	
+	public void closeDriver() {
+		
+		driver.findElement(By.xpath("//span[contains(text(), 'Logout')]")).click();
+		driver.close();
+	}
 }
