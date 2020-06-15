@@ -28,19 +28,23 @@ public class CreateReportAdminTest extends TestBase {
 
 	@Test(description="US_006 Creation of Report",groups={"US_006","regression","sanity","adminmodule"})
 	public void createReport() throws Exception {
+		
+		String reptName = "XRAY-Stomach report-2";
+		String reptDesc = "This is the 2nd XRAY of Stomach ulcer";
+		String uploadFilepath = System.getProperty("user.dir")+ "\\Data\\lung-article-703x441.jpg" ;
 
 		helperObj = new HelperClass(driver);
 		helperObj.launchApplicationURL("http://96.84.175.78/MMP-Release2-Admin-Build.2.1.000/login.php");
 		helperObj.login("Thomas_444","Edison_444");
 		helperObj.moduleNavigation("Patients");
 		CreateReportAdminPage createRepo = new CreateReportAdminPage(driver);
-		createRepo.patientSearchName("Ria");
-		createRepo.searchRecord("Ria","462379048");
-		//createRepo.searchRecord("Anya","210911222");
+		createRepo.patientSearchName("Anya");
+		//createRepo.searchRecord("Ria","462379048");
+		createRepo.searchRecord("Anya","210911222");
 		//createRepo.patientSearchSSN("462379048");
-		createRepo.patientDetails("462379048");
+		createRepo.patientDetails("210911222");
 		SoftAssert sa = new SoftAssert();
-		sa.assertTrue(createRepo.reportDetails("XRAY-General report","This is general XRAY report","C:\\Users\\vikib\\Desktop\\Team Wales - SELENIUM PROJECT\\Project Work\\lung-article-703x441.jpg"), null);
+		sa.assertTrue(createRepo.reportDetails(reptName,reptDesc,uploadFilepath), null);
 		sa.assertAll();
 		helperObj.closeDriver();
 		
