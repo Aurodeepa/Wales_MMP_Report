@@ -26,18 +26,20 @@ public class ValidateReportsEndToEndTest extends TestBase {
 	
 	public void ValidateReport() throws Exception{
 		
+		String reptName = "XRAY-Stomach report";
+		String reptDesc = "This is XRAY of Stomach ulcer";
+		String uploadFilepath = System.getProperty("user.dir")+ "\\Data\\lung-article-703x441.jpg" ;
+
+		
 		helperObj = new HelperClass(driver);
 		helperObj.launchApplicationURL("http://96.84.175.78/MMP-Release2-Admin-Build.2.1.000/login.php");
 		helperObj.login("Thomas_444","Edison_444");
 		helperObj.moduleNavigation("Patients");
 		CreateReportAdminPage createRepo = new CreateReportAdminPage(driver);
 		createRepo.patientSearchName("Ria");
-		//createRepo.patientSearchName("Anya");
 		createRepo.searchRecord("Ria","462379048");
-		//createRepo.searchRecord("Anya","210911222");
 		createRepo.patientDetails("462379048");
-		//createRepo.patientDetails("210911222");
-		HashMap<String, String> hMap = createRepo.reportDetail("XRAY:Lungs report","This is XRAY for Heart Report","C:\\Users\\vikib\\Desktop\\Team Wales - SELENIUM PROJECT\\Project Work\\lung-article-703x441.jpg");
+		HashMap<String, String> hMap = createRepo.reportDetail(reptName,reptDesc,uploadFilepath);
 				
 		//Log in to Patient portal to validate the data entered from Admin portal
 		
